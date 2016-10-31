@@ -3,16 +3,18 @@ require_relative '../lib/graph.rb'
 describe Graph do
 
   let(:graph) {
-    Graph.new([
-                [0, 3],
-                [3, 5],
-                [5, 7],
-                [5, 6],
-                [1, 2],
-                [2, 6],
-                [4, 6],
-                [6, 7]
-             ])
+    Graph.new(
+      [
+        [0, 3],
+        [3, 5],
+        [5, 7],
+        [5, 6],
+        [1, 2],
+        [2, 6],
+        [4, 6],
+        [6, 7]
+      ]
+    )
   }
 
   describe "#base" do
