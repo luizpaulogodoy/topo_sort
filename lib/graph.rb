@@ -7,7 +7,7 @@ class Graph
     @nodes = (nodes + edges.flatten).uniq
   end
 
-  def next_nodes(node)
+  def successors(node)
     edges.select {|i| node == base(i)}
   end
 
@@ -16,17 +16,15 @@ class Graph
   end
 
   def sort
-    if nodes.empty?
-      []
-    else
-      first_nodes = nodes.select {|n| predecessors(n).empty?}
-      if first_nodes.empty?
-        raise CyclicError
-      end
-      removed_edges = first_nodes.map {|n| next_nodes(n)}.flatten(1)
-      unsorted_nodes = Graph.new(edges - removed_edges, nodes - first_nodes)
-      first_nodes + unsorted_nodes.sort
-    end
+    return [] if nodes.empty?
+
+    first_nodes = nodes.select {|n| predecessors(n).empty?}
+    raise CyclicError if first_nodes.empty?
+
+    removed_edges = first_nodes.map {|n| successors(n)}.flatten(1)
+    unsorted_nodes = Graph.new(edges - removed_edges, nodes - first_nodes)
+
+    first_nodes + unsorted_nodes.sort
   end
 
   private

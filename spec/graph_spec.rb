@@ -17,9 +17,9 @@ describe Graph do
     )
   }
 
-  describe "#next_nodes" do
-    it "gets next nodes" do
-      expect(graph.next_nodes(5)).to include([5, 7], [5, 6])
+  describe "#successors" do
+    it "gets successors nodes" do
+      expect(graph.successors(5)).to include([5, 7], [5, 6])
     end
   end
 
