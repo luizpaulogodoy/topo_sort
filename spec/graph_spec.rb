@@ -17,18 +17,6 @@ describe Graph do
     )
   }
 
-  describe "#base" do
-    it "gets first element of edge" do
-      expect(graph.send(:base, [0, 3])).to eq(0)
-    end
-  end
-
-  describe "#destination" do
-    it "gets last element of edge" do
-      expect(graph.send(:destination, [0, 3])).to eq(3)
-    end
-  end
-
   describe "#next_nodes" do
     it "gets next nodes" do
       expect(graph.next_nodes(5)).to include([5, 7], [5, 6])
